@@ -1,1 +1,247 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3D Card Flip Gallery - Animals</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1a2a6c, #2a3a7c, #3a4a8c);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      color: white;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin-bottom: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+    }
+
+    .card {
+      width: 300px;
+      height: 400px;
+      perspective: 1000px;
+    }
+
+    .inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .card:hover .inner {
+      transform: rotateY(180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      backface-visibility: hidden;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .front {
+      background: linear-gradient(135deg, #4a90e2, #7b4397);
+      color: white;
+      text-align: center;
+    }
+
+    .animal-name {
+      font-size: 42px;
+      font-weight: bold;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      margin-bottom: 15px;
+    }
+
+    .animal-subtitle {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .back {
+      background: #fff;
+      transform: rotateY(180deg);
+      text-align: center;
+      color: #333;
+    }
+
+    .animal-image {
+      width: 100%;
+      height: 70%;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border: 5px solid #f5f5f5;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .animal-info {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .card:nth-child(1) .front {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    }
+
+    .card:nth-child(2) .front {
+      background: linear-gradient(135deg, #56ab2f, #a8e063);
+    }
+
+    .card:nth-child(3) .front {
+      background: linear-gradient(135deg, #4a90e2, #7b4397);
+    }
+
+    .instructions {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Wildlife 3D Gallery</h1>
+    <p class="subtitle">Hover over the cards to reveal amazing animals</p>
+  </div>
+
+  <div class="gallery">
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <div class="animal-name">Jaguar</div>
+          <div class="animal-subtitle">The Shadow Hunter</div>
+        </div>
+        <div class="back">
+          <img src="1.jpeg" alt="Jaguar" class="animal-image">
+          <div class="animal-info">
+            The jaguar is the largest cat in the Americas and the third-largest in the world. Known for its powerful bite.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <div class="animal-name">Kingfisher</div>
+          <div class="animal-subtitle">The River Jewel</div>
+        </div>
+        <div class="back">
+          <img src="2.jpeg" alt="Kingfisher" class="animal-image">
+          <div class="animal-info">
+            Kingfishers are small to medium-sized birds with large heads and long, sharp bills. They are expert fishers.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="front">
+          <div class="animal-name">Tiger</div>
+          <div class="animal-subtitle">The Striped Majesty</div>
+        </div>
+        <div class="back">
+          <img src="3.jpeg" alt="Tiger" class="animal-image">
+          <div class="animal-info">
+            The tiger is the largest living cat species and a member of the genus Panthera. It's recognizable for its dark vertical stripes.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <p>Hover over the cards to see the animals in 3D!</p>
+  </div>
+
+  <script>
+    // Add a simple animation to cards when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.card');
+      
+      cards.forEach((card, index) => {
+        // Set a staggered animation delay
+        card.style.animation = `fadeIn 0.5s ease-out ${index * 0.2}s both`;
+      });
+    });
+
+    // Add CSS for fade-in animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
